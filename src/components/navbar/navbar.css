@@ -6,7 +6,7 @@ nav {
   flex-flow: column;
   align-items: flex-start;
   padding: 20px;
-  padding-top: 70px;
+  padding-top: 100px;
   height: 100vh;
   width: 350px;
   background: white;
@@ -35,12 +35,67 @@ nav {
       0 0 0 0 rgba(0, 0, 0, 0.7);
   }
 
+  &.searching {
+    width: 100%;
+    box-shadow:
+      0px 0 0 0 rgba(var(--grass), 0.9),
+      0px 0 0 0 rgba(var(--fire), 0.9),
+      0px 0 0 0 rgba(var(--electric), 0.9),
+      0px 0 0 0 rgba(var(--water), 0.9),
+      0 0 0 0 rgba(0, 0, 0, 0.7);
+    div#searchInputContainer {
+      input#searchInput {
+        border: 2px solid var(--primary-color);
+        box-shadow: inset 0px 0px 3px 0px var(--primary-color);
+        border-radius: 12px;
+      }
+    }
+    ul {
+      opacity: 0;
+    }
+  }
+  div#searchInputContainer {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    input#searchInput {
+      width: 100%;
+      height: 100%;
+      padding-left: 50px;
+      background: white;
+      color: var(--primary-color);
+      font-size: 24px;
+      border: 2px solid transparent;
+      border-bottom: 2px solid var(--primary-color);
+      transition: 0.4s ease;
+    }
+    label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      svg {
+        stroke: var(--primary-color);
+      }
+    }
+    button.search-btn {
+      opacity: 0;
+      visibility: 0;
+      width: 0;
+      height: 0;
+    }
+  }
   ul {
     display: flex;
     flex-flow: column;
     align-items: center;
     width: 100%;
-    padding-top: 30px;
+    padding-top: 10px;
     gap: 10px;
     li {
       position: relative;

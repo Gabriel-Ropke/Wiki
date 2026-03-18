@@ -1,11 +1,16 @@
 import("./header.css");
 import logo from "../../assets/Logo.png";
 
-export function Header({ isOpen, toggleMenu }) {
+export function Header({ isOpen, toggleMenu, searching, closeSearching }) {
   return (
     <>
-      <button className="menu-btn" onClick={toggleMenu}>
-        <span className={isOpen ? "open" : ""}></span>
+      <button
+        className="menu-btn"
+        onClick={searching ? closeSearching : toggleMenu}
+      >
+        <span
+          className={`${isOpen ? "open" : ""} ${searching ? "searching" : ""}`}
+        ></span>
       </button>
       <header className={isOpen ? "" : "open"}>
         <div></div>

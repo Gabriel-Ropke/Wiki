@@ -53,6 +53,19 @@ button.menu-btn {
       background: var(--primary-color);
     }
 
+    &.open.searching {
+      width: 25px;
+      rotate: 225deg;
+      top: 10px;
+      &::before {
+        width: 25px;
+        top: 10px;
+        left: 10px;
+      }
+      &::after {
+        opacity: 0;
+      }
+    }
     &.open {
       rotate: 45deg;
       width: 40px;

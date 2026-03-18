@@ -1,7 +1,22 @@
 import "./navbar.css";
-export function Navbar({ isOpen }) {
+import { Search } from "lucide-react";
+export function Navbar({ isOpen, searching, activeSearching }) {
   return (
-    <nav className={isOpen ? "nav-menu" : "nav-menu closed"}>
+    <nav
+      className={`nav-menu ${isOpen ? "" : "closed"} ${searching ? "searching" : ""}`}
+    >
+      <div id="searchInputContainer">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Pesquise aqui.."
+          onClick={activeSearching}
+        />
+        <label htmlFor="searchInput">
+          <Search size={24} />
+        </label>
+        <button className="search-btn">search</button>
+      </div>
       <ul>
         <li>
           <a href="#Pokémon">Pokémon</a>
