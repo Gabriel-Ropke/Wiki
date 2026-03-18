@@ -15,7 +15,6 @@ export function Navbar({ isOpen, searching, activeSearching }) {
         <label htmlFor="searchInput">
           <Search size={24} />
         </label>
-        <button className="search-btn">search</button>
       </div>
       <ul>
         <li>

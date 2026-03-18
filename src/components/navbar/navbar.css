@@ -52,6 +52,8 @@ nav {
     }
     ul {
       opacity: 0;
+      width: 0;
+      height: 0;
     }
   }
   div#searchInputContainer {
@@ -68,6 +70,12 @@ nav {
       border: 2px solid transparent;
       border-bottom: 2px solid var(--primary-color);
       transition: 0.4s ease;
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        -webkit-text-fill-color: var(--primary-color);
+        border: 0;
+        outline: 0;
+      }
     }
     label {
       position: absolute;
@@ -82,12 +90,6 @@ nav {
       svg {
         stroke: var(--primary-color);
       }
-    }
-    button.search-btn {
-      opacity: 0;
-      visibility: 0;
-      width: 0;
-      height: 0;
     }
   }
   ul {
