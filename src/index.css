@@ -1,0 +1,62 @@
+:root {
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  /* Colors Scheme */
+  --rock: 182, 158, 49;
+  --ghost: 112, 85, 155;
+  --steel: 183, 185, 208;
+  --water: 100, 147, 235;
+  --grass: 76, 203, 72;
+  --psychic: 251, 85, 132;
+  --ice: 154, 214, 223;
+  --dark: 117, 87, 76;
+  --fairy: 230, 158, 172;
+  --normal: 170, 166, 127;
+  --fighting: 193, 34, 57;
+  --flying: 168, 145, 236;
+  --poison: 164, 62, 158;
+  --ground: 222, 193, 107;
+  --bug: 167, 183, 35;
+  --fire: 245, 125, 49;
+  --electric: 249, 207, 48;
+  --dragon: 112, 55, 255;
+  --epic: 171, 17, 209;
+  --rare: 69, 207, 35;
+  --uncommon: 2, 100, 192;
+  --common: 95, 152, 206;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+div.container-app {
+  width: 100%;
+  min-height: 100vh;
+}

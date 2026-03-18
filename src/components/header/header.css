@@ -1,0 +1,154 @@
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  width: 100%;
+  height: 80px;
+  background: rgb(255, 255, 255);
+  border-bottom: 5px solid var(--primary-color);
+  border-radius: 0 0 5px 5px;
+  transition: 0.3s ease;
+
+  /* Component Effects */
+  &.open:hover {
+    height: 95px;
+    border-bottom: 8px solid var(--primary-color);
+  }
+
+  /* Children */
+  button.menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+
+    &:hover {
+      span.open {
+        rotate: 30deg;
+        scale: 1.1;
+        box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 1);
+        &::before {
+          box-shadow: 2px -2px 0 0 rgba(0, 0, 0, 1);
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 5px;
+      border-radius: 5px;
+      transition: 0.3s ease;
+      background: var(--primary-color);
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 30px;
+        height: 5px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+        background: var(--primary-color);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 0;
+        width: 30px;
+        height: 5px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+        background: var(--primary-color);
+      }
+
+      &.open {
+        rotate: 45deg;
+        width: 40px;
+        height: 6px;
+        &::before {
+          rotate: 90deg;
+          top: 0;
+          width: 40px;
+          height: 6px;
+        }
+        &::after {
+          opacity: 1;
+          top: 0px;
+        }
+      }
+    }
+  }
+
+  div.logo-container {
+    width: 180px;
+    height: 72px;
+    transition: 0.3s ease;
+
+    /* Component Effects */
+    &:hover {
+      scale: 1.1;
+    }
+    a {
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  ul.login-header-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    /* Children */
+    li {
+      border-radius: 5px;
+      background: var(--primary-color);
+      border: 3px solid var(--primary-color);
+      transition: 0.3s ease;
+      &:hover {
+        filter: brightness(1.2);
+      }
+
+      /* Children */
+      a {
+        display: block;
+        padding: 5px 20px;
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-weight: 600;
+      }
+      &:first-child {
+        background: none;
+        &:hover {
+          background: var(--primary-color);
+          a {
+            color: white;
+          }
+        }
+        a {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+body {
+  margin-top: 20px;
+}
