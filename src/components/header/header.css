@@ -12,6 +12,12 @@ button.menu-btn {
   z-index: 1000;
 
   &:hover {
+    span {
+      &::before,
+      &::after {
+        width: 100%;
+      }
+    }
     span.open {
       rotate: 30deg;
       scale: 1.1;

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMemo } from "react";
 import "./index.css";
 import { Home } from "./pages/home/home";
+import { UIProvider } from "./components/UIContext";
 
 function App() {
   /* Primary Color Function */
@@ -14,16 +15,18 @@ function App() {
     ];
   }, []);
   return (
-    <div
-      style={{ "--primary-color": primaryColor[0] }}
-      className="container-app"
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/Wiki" element={<Home imageId={primaryColor[1]} />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <UIProvider>
+      <div
+        style={{ "--primary-color": primaryColor[0] }}
+        className="container-app"
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/Wiki" element={<Home imageId={primaryColor[1]} />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </UIProvider>
   );
 }
 

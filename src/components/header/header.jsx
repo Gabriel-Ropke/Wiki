@@ -2,21 +2,11 @@ import("./header.css");
 import { useState } from "react";
 import logo from "../../assets/Logo.png";
 import { Navbar } from "../navbar/navbar";
+import { useUI } from "../UIContext";
 
 export function Header({}) {
-  /* Search Function */
-  const [searching, setSearching] = useState(false);
-  function activeSearching() {
-    setSearching(true);
-  }
-  function closeSearching() {
-    setSearching(false);
-  }
-  /* Navbar Function */
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  function toggleMenu() {
-    setIsMenuOpen((prev) => !prev);
-  }
+  const { closeSearching, activeSearching, searching, isMenuOpen, toggleMenu } =
+    useUI();
   return (
     <>
       <button
