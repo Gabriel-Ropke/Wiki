@@ -1,41 +1,28 @@
-import { useState, useMemo } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useMemo } from "react";
 import "./index.css";
-import { Header } from "./components/header/header";
-import { Navbar } from "./components/navbar/navbar";
+import { Home } from "./pages/home/home";
 
 function App() {
-  /* Search Function */
-  const [searching, setSearching] = useState(false);
-  function activeSearching() {
-    setSearching(true);
-  }
-  function closeSearching() {
-    setSearching(false);
-  }
-  /* Navbar Function */
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  function toggleMenu() {
-    setIsMenuOpen((prev) => !prev);
-  }
-
   /* Primary Color Function */
+  const colors = ["--water", "--fire", "--grass", "--fighting"];
   const primaryColor = useMemo(() => {
-    const colors = ["--water", "--fire", "--poison", "--grass", "--fighting"];
-    return `rgba(var(${colors[Math.floor(Math.random() * colors.length)]}))`;
+    const randomNumber = Math.floor(Math.random() * colors.length);
+    return [
+      `rgba(var(${colors[Math.floor(randomNumber)]}))`,
+      colors[randomNumber],
+    ];
   }, []);
   return (
-    <div style={{ "--primary-color": primaryColor }} className="container-app">
-      <Header
-        isOpen={isMenuOpen}
-        searching={searching}
-        toggleMenu={toggleMenu}
-        closeSearching={closeSearching}
-      />
-      <Navbar
-        isOpen={isMenuOpen}
-        activeSearching={activeSearching}
-        searching={searching}
-      />
+    <div
+      style={{ "--primary-color": primaryColor[0] }}
+      className="container-app"
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Wiki" element={<Home imageId={primaryColor[1]} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

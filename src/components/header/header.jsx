@@ -1,18 +1,33 @@
 import("./header.css");
+import { useState } from "react";
 import logo from "../../assets/Logo.png";
+import { Navbar } from "../navbar/navbar";
 
-export function Header({ isOpen, toggleMenu, searching, closeSearching }) {
+export function Header({}) {
+  /* Search Function */
+  const [searching, setSearching] = useState(false);
+  function activeSearching() {
+    setSearching(true);
+  }
+  function closeSearching() {
+    setSearching(false);
+  }
+  /* Navbar Function */
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  function toggleMenu() {
+    setIsMenuOpen((prev) => !prev);
+  }
   return (
     <>
       <button
-        className="menu-btn"
+        className={`menu-btn ${isMenuOpen ? "open" : ""}`}
         onClick={searching ? closeSearching : toggleMenu}
       >
         <span
-          className={`${isOpen ? "open" : ""} ${searching ? "searching" : ""}`}
+          className={`${isMenuOpen ? "open" : ""} ${searching ? "searching" : ""}`}
         ></span>
       </button>
-      <header className={isOpen ? "" : "open"}>
+      <header className={isMenuOpen ? "" : "open"}>
         <div></div>
         <div className="logo-container">
           <a href="#home">
@@ -29,6 +44,11 @@ export function Header({ isOpen, toggleMenu, searching, closeSearching }) {
           </li>
         </ul>
       </header>
+      <Navbar
+        activeSearching={activeSearching}
+        isOpen={isMenuOpen}
+        searching={searching}
+      />
     </>
   );
 }

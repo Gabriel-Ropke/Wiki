@@ -1,0 +1,147 @@
+div.hero-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--primary-color);
+  .img-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    div.overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 31%,
+        rgba(0, 0, 0, 0.72) 100%
+      );
+    }
+    img {
+      position: relative;
+      width: 100%;
+    }
+  }
+  div.hero-content-container {
+    position: relative;
+    z-index: 2;
+    h2.title {
+      text-align: center;
+      font-size: 96px;
+      line-height: 120px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+
+      font-family: "Fredoka", sans-serif;
+      span {
+        color: var(--primary-color);
+      }
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      li {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--primary-color);
+        border-radius: 50%;
+        background: white;
+        &:hover {
+          &::before,
+          &::after {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+        &::before {
+          content: attr(data-text);
+          position: absolute;
+          top: calc(100% + 20px);
+          left: 10%;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s ease-in;
+          white-space: nowrap;
+          color: black;
+          background: white;
+          padding: 2px 10px;
+          border-radius: 15px;
+          border: 2px solid var(--primary-color);
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: calc(100% + 11px);
+          left: 40%;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s ease-in;
+          display: block;
+          width: 0;
+          height: 0;
+          /* As bordas laterais criam a inclinação */
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+
+          /* A borda oposta à direção que você quer define a altura e a cor */
+          border-bottom: 10px solid var(--primary-color);
+        }
+        &:hover {
+        }
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          &:hover {
+            svg {
+              stroke: var(--primary-color);
+            }
+          }
+          svg {
+            stroke: black;
+          }
+        }
+      }
+    }
+  }
+}
+div.quantity-container {
+  width: 100%;
+  padding: 20px 0;
+  font-family: "Fredoka", sans-serif;
+  background: white;
+  border-bottom: 2px solid var(--primary-color);
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    li {
+      a {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        color: black;
+      }
+      span.number {
+        font-size: 48px;
+        line-height: 50px;
+        color: var(--primary-color);
+      }
+    }
+  }
+}

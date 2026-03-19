@@ -23,6 +23,7 @@ nav {
   transition:
     0.3s ease,
     box-shadow 2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
   &.closed {
     width: 0;
     opacity: 0;
@@ -73,7 +74,7 @@ nav {
       &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0px 1000px white inset;
         -webkit-text-fill-color: var(--primary-color);
-        border: 0;
+        border: 2px solid var(--primary-color);
         outline: 0;
       }
     }
