@@ -6,7 +6,7 @@ import { UIProvider } from "./components/UIContext";
 
 function App() {
   /* Primary Color Function */
-  const colors = ["--water", "--fire", "--grass", "--fighting"];
+  const colors = ["--fire", "--grass", "--water"];
   const primaryColor = useMemo(() => {
     const randomNumber = Math.floor(Math.random() * colors.length);
     return [
@@ -22,7 +22,10 @@ function App() {
       >
         <BrowserRouter>
           <Routes>
-            <Route path="/Wiki" element={<Home imageId={primaryColor[1]} />} />
+            <Route
+              path="/Wiki"
+              element={<Home elementId={primaryColor[1]} />}
+            />
           </Routes>
         </BrowserRouter>
       </div>

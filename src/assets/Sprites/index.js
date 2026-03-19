@@ -1,0 +1,16 @@
+export { default as growlithe } from "./Growlithe.png";
+export { default as arcanine } from "./arcanine.png";
+export { default as shellder } from "./shellder.png";
+export { default as cloyster } from "./cloyster.png";
+export { default as exeggcute } from "./exeggcute.png";
+export { default as exeggutor } from "./exeggutor.png";
+export { default as psyduck } from "./psyduck.png";
+export { default as golduck } from "./golduck.png";
+export { default as magikarp } from "./magikarp.png";
+export { default as gyarados } from "./gyarados.png";
+export { default as vulpix } from "./vulpix.png";
+export { default as ninetales } from "./ninetales.png";
+export { default as ponyta } from "./ponyta.png";
+export { default as rapidash } from "./rapidash.png";
+export { default as scyther } from "./scyther.png";
+export { default as tangela } from "./tangela.png";

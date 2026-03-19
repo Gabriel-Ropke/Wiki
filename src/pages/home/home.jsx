@@ -1,42 +1,30 @@
 import { Header } from "../../components/header/header";
-import fire from "../../assets/Hero/Fire.jpg";
-import grass from "../../assets/Hero/Grass.jpg";
-import water from "../../assets/Hero/Water.jpg";
-import fighting from "../../assets/Hero/Fighting.jpg";
-import elementFire from "../../assets/Elements/Fire.png";
-import elementLeaf from "../../assets/Elements/Leaf.png";
-import elementWater from "../../assets/Elements/Water.png";
-import elementFighting from "../../assets/Elements/Fighting.png";
-import pokeFire from "../../assets/Poke/Fire.png";
-import pokeGrass from "../../assets/Poke/Grass.png";
-import pokeWater from "../../assets/Poke/Water.png";
-import pokeFighting from "../../assets/Poke/Fighting.png";
 import "./home.css";
 import { ArrowRight, MapIcon, Search } from "lucide-react";
 import ParticleEffect from "../../components/ParticleEffects";
 import { useUI } from "../../components/UIContext";
-ArrowRight;
+import { element_assets } from "../../assets/constants/elementAssets";
+import { PokemonCard } from "../../components/pokemonCard/PokemonCard";
 
-export function Home({ imageId }) {
+export function Home({ elementId }) {
+  const element = elementId.replace("--", "");
+  const selectedElement = element_assets[element];
+  const pokemon = selectedElement.Pokemon;
+  const heroImage = selectedElement.Hero;
+  const basicPokemon = Object.values(pokemon).filter(
+    (p) => p.stage === "basic",
+  );
   const { activeSearching, toggleMenu } = useUI();
   function searchInput() {
     activeSearching();
     toggleMenu();
   }
-  const images = {
-    fire: [fire, elementFire, pokeFire],
-    water: [water, elementWater, pokeWater],
-    fighting: [fighting, elementFighting, pokeFighting],
-    grass: [grass, elementLeaf, pokeGrass],
-  };
-  const selectedType = imageId.replace("--", "");
-  const heroImage = images[selectedType][0];
   return (
     <>
       <Header />
       <div className="hero-container">
         <div className="img-container">
-          <ParticleEffect type={selectedType} />
+          <ParticleEffect type={selectedElement.type} />
           <img src={heroImage} alt="" />
           <div className="overlay"></div>
         </div>
@@ -109,14 +97,14 @@ export function Home({ imageId }) {
       </div>
       <div className="last-outfit">
         <h4>Últimos Pokémon</h4>
-        <img className="poke" src={images[selectedType][2]} alt="" />
-        <img className="element" src={images[selectedType][1]} alt="" />
-        <ul className={`${selectedType}`}>
-          <li></li>
-          <li></li>
-          <li></li>
+        <img className="poke" src={selectedElement.Poke} alt="" />
+        <img className="element" src={selectedElement.icon} alt="" />
+        <ul id="pokemonList" className={`${selectedElement.type}`}>
+          {basicPokemon.map((base) => {
+            return <PokemonCard pokemonList={pokemon} pokemon={base} />;
+          })}
         </ul>
-        <img className="element" src={images[selectedType][1]} alt="" />
+        <img className="element" src={selectedElement.icon} alt="" />
       </div>
       <div className="last-updates">
         <h4>Últimas Atualizações</h4>
