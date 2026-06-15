@@ -3,10 +3,11 @@ import { useMemo } from "react";
 import "./index.css";
 import { Home } from "./pages/home/home";
 import { UIProvider } from "./components/UIContext";
+import { Login } from "./pages/login/Login";
 
 function App() {
   /* Primary Color Function */
-  const colors = ["--fire", "--grass", "--water"];
+  const colors = ["--fire", "--grass", "--water", "--fighting"];
   const primaryColor = useMemo(() => {
     const randomNumber = Math.floor(Math.random() * colors.length);
     return [
@@ -25,6 +26,10 @@ function App() {
             <Route
               path="/Wiki"
               element={<Home elementId={primaryColor[1]} />}
+            />
+            <Route
+              path="/Wiki/login"
+              element={<Login elementId={primaryColor[1]} />}
             />
           </Routes>
         </BrowserRouter>

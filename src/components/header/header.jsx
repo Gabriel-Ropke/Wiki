@@ -4,7 +4,7 @@ import logo from "../../assets/Logo.png";
 import { Navbar } from "../navbar/navbar";
 import { useUI } from "../UIContext";
 
-export function Header({}) {
+export function Header({ }) {
   const { closeSearching, activeSearching, searching, isMenuOpen, toggleMenu } =
     useUI();
   return (
@@ -27,7 +27,7 @@ export function Header({}) {
 
         <ul className="login-header-area">
           <li>
-            <a href="#login">Log In</a>
+            <a href="/Wiki/login">Log In</a>
           </li>
           <li>
             <a href="#register">Register</a>

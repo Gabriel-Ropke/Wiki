@@ -1,24 +1,7 @@
 import { Fighting, Fire, Grass, Water } from "../Elements";
 import { Hero_Fighting, Hero_Fire, Hero_Grass, Hero_Water } from "../Hero";
 import { Cyndaquil, Riolu, Mudkip, Treecko } from "../Poke";
-import {
-  arcanine,
-  cloyster,
-  growlithe,
-  ponyta,
-  rapidash,
-  scyther,
-  shellder,
-  tangela,
-  vulpix,
-  ninetales,
-  exeggcute,
-  exeggutor,
-  psyduck,
-  golduck,
-  magikarp,
-  gyarados,
-} from "../Sprites";
+import { Right_Charmander, Right_Goldeen, Right_Pikachu, Right_Snorlax, Right_Squirtle, Left_Growlithe, Left_Mankey, Left_Poliwag, Left_Victrebell } from "../icons";
 
 export const element_assets = {
   fire: {
@@ -26,151 +9,31 @@ export const element_assets = {
     Poke: Cyndaquil,
     icon: Fire,
     Hero: Hero_Fire,
-    Pokemon: {
-      1: {
-        name: "Growlithe",
-        type: ["fire"],
-        evolve: true,
-        sprite: growlithe,
-        stage: "basic",
-        evolution_line: [1, 2],
-      },
-      2: {
-        name: "Arcanine",
-        type: ["fire"],
-        evolve: false,
-        stage: "evolved",
-        sprite: arcanine,
-        evolution_line: [1, 2],
-      },
-      3: {
-        name: "Ponyta",
-        type: ["fire"],
-        evolve: true,
-        stage: "basic",
-        sprite: ponyta,
-        evolution_line: [3, 4],
-      },
-      4: {
-        name: "Rapidash",
-        type: ["fire"],
-        evolve: false,
-        sprite: rapidash,
-        stage: "evolved",
-        evolution_line: [3, 4],
-      },
-      5: {
-        name: "Vulpix",
-        type: ["fire"],
-        evolve: true,
-        stage: "basic",
-        sprite: vulpix,
-        evolution_line: [5, 6],
-      },
-      6: {
-        name: "Ninetales",
-        type: ["fire"],
-        evolve: false,
-        sprite: ninetales,
-        stage: "evolved",
-        evolution_line: [5, 6],
-      },
-    },
+    right: Right_Charmander,
+    left: Left_Growlithe
   },
   water: {
     type: "water",
     Poke: Mudkip,
     icon: Water,
     Hero: Hero_Water,
-    Pokemon: {
-      1: {
-        name: "Magikarp",
-        type: ["water"],
-        evolve: true,
-        sprite: magikarp,
-        stage: "basic",
-        evolution_line: [1, 2],
-      },
-      2: {
-        name: "Gyarados",
-        type: ["water", "flying"],
-        evolve: false,
-        stage: "evolved",
-        sprite: gyarados,
-        evolution_line: [1, 2],
-      },
-      3: {
-        name: "Psyduck",
-        type: ["water"],
-        evolve: true,
-        stage: "basic",
-        sprite: psyduck,
-        evolution_line: [3, 4],
-      },
-      4: {
-        name: "Golduck",
-        type: ["water"],
-        evolve: false,
-        sprite: golduck,
-        stage: "evolved",
-        evolution_line: [3, 4],
-      },
-      5: {
-        name: "Shellder",
-        type: ["water"],
-        evolve: true,
-        stage: "basic",
-        sprite: shellder,
-        evolution_line: [5, 6],
-      },
-      6: {
-        name: "Cloyster",
-        type: ["water", "ice"],
-        evolve: false,
-        sprite: cloyster,
-        stage: "evolved",
-        evolution_line: [5, 6],
-      },
-    },
+    right: Right_Goldeen,
+    left: Left_Poliwag
   },
   grass: {
     type: "grass",
     Poke: Treecko,
     icon: Grass,
     Hero: Hero_Grass,
-    Pokemon: {
-      1: {
-        name: "Exeggcute",
-        type: ["grass", "psychic"],
-        evolve: true,
-        sprite: exeggcute,
-        stage: "basic",
-        evolution_line: [1, 2],
-      },
-      2: {
-        name: "Exeggutor",
-        type: ["grass", "psychic"],
-        evolve: false,
-        stage: "evolved",
-        sprite: exeggutor,
-        evolution_line: [1, 2],
-      },
-      3: {
-        name: "Scyther",
-        type: ["bug", "flying"],
-        evolve: false,
-        stage: "basic",
-        sprite: scyther,
-        evolution_line: [3],
-      },
-      4: {
-        name: "Tangela",
-        type: ["grass"],
-        evolve: false,
-        sprite: tangela,
-        stage: "basic",
-        evolution_line: [4],
-      },
-    },
+    right: Right_Pikachu,
+    left: Left_Victrebell
+  },
+  fighting: {
+    type: "fighting",
+    Poke: Riolu,
+    icon: Fighting,
+    Hero: Hero_Fighting,
+    right: Right_Snorlax,
+    left: Left_Mankey
   },
 };

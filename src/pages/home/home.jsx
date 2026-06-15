@@ -1,167 +1,186 @@
 import { Header } from "../../components/header/header";
 import "./home.css";
-import { ArrowRight, MapIcon, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ParticleEffect from "../../components/ParticleEffects";
-import { useUI } from "../../components/UIContext";
 import { element_assets } from "../../assets/constants/elementAssets";
-import { PokemonCard } from "../../components/pokemonCard/PokemonCard";
+import { useState } from "react";
+import news from "./news";
+import { Footer } from "../../components/footer/Footer";
+import solrock from "../../assets/icons/solrock.png"
+import { PageWithHeader } from "../../components/header/pageWithHeader";
 
 export function Home({ elementId }) {
   const element = elementId.replace("--", "");
   const selectedElement = element_assets[element];
-  const pokemon = selectedElement.Pokemon;
   const heroImage = selectedElement.Hero;
-  const basicPokemon = Object.values(pokemon).filter(
-    (p) => p.stage === "basic",
-  );
-  const { activeSearching, toggleMenu } = useUI();
-  function searchInput() {
-    activeSearching();
-    toggleMenu();
+  const [heroActive, setHeroActive] = useState(false)
+  function getRandomSide() {
+    const side = parseInt(Math.random() * 2)
+    return side === 1 ? "left" : "right"
   }
+  function handleClickHeroTitle() {
+
+    window.scrollTo({ top: 0 })
+    return setHeroActive(!heroActive)
+  }
+
+  const side = getRandomSide()
+  const ourContentImage = selectedElement[side]
   return (
-    <>
-      <Header />
-      <div className="hero-container">
+    <PageWithHeader>
+      <div className={heroActive ? "hero-container active" : "hero-container"}>
         <div className="img-container">
           <ParticleEffect type={selectedElement.type} />
-          <img src={heroImage} alt="" />
+          <img className="hero-image" src={heroImage} alt="" />
           <div className="overlay"></div>
         </div>
         <div className="hero-content-container">
-          <h2 className="title">
+          <h2 className="title" onClick={() => handleClickHeroTitle()}>
             Wiki <span>PokéNew</span>
           </h2>
-          <ul className="select-list">
-            <li data-text="Mapas">
-              <a href="#Pokémon">
-                <MapIcon size={32} />
+          <ul className="hero-game-list">
+            <li className="hero-game" style={{ "--primary-color": "rgb(var(--fire))" }}>
+              <a href="#pokedex">
+                <div className="icon" data-name="pokedex">
+                  <ArrowRight size={40} />
+                </div>
+                <div className="cardContent">
+                  <div className="elementImg">
+                    <img src={element_assets["fire"].icon} alt="" />
+                  </div>
+                </div>
               </a>
             </li>
-            <li data-text="Mapas">
-              <a href="#Pokémon">
-                <MapIcon size={32} />
+            <li className="hero-game" style={{ "--primary-color": "rgb(var(--water))" }}>
+              <a href="#pokedex">
+                <div className="icon" data-name="pokedex">
+                  <ArrowRight size={40} />
+                </div>
+                <div className="cardContent">
+                  <div className="elementImg">
+                    <img src={element_assets["water"].icon} alt="" />
+                  </div>
+                </div>
               </a>
             </li>
-            <li data-text="Mapas">
-              <a href="#Pokémon">
-                <MapIcon size={32} />
+            <li className="hero-game" style={{ "--primary-color": "rgb(var(--grass))" }}>
+              <a href="#pokedex">
+                <div className="icon" data-name="pokedex">
+                  <ArrowRight size={40} />
+                </div>
+                <div className="cardContent">
+                  <div className="elementImg">
+                    <img src={element_assets["grass"].icon} alt="" />
+                  </div>
+                </div>
               </a>
             </li>
-            <li data-text="Mapas grandes">
-              <a href="#Pokémon">
-                <MapIcon size={32} />
+            <li className="hero-game" style={{ "--primary-color": "rgb(var(--fighting))" }}>
+              <a href="#pokedex">
+                <div className="icon" data-name="pokedex">
+                  <ArrowRight size={40} />
+                </div>
+                <div className="cardContent">
+                  <div className="elementImg">
+                    <img src={element_assets["fighting"].icon} alt="" />
+                  </div>
+                </div>
               </a>
             </li>
           </ul>
-          <div id="homeSearchInputContainer">
-            <input
-              type="text"
-              id="homeSearchInput"
-              placeholder="Pesquise aqui.."
-              onClick={searchInput}
-            />
-            <label htmlFor="homeSearchInput">
-              <Search size={24} />
-            </label>
-          </div>
         </div>
       </div>
-      <div className="quantity-container">
+      <div className={heroActive ? "quantity-container active" : "quantity-container"}>
         <ul>
           <li>
             <a href="#Pokédex">
-              <span className="number">151</span>
-              <span className="text">Pokémon</span>
+              <span className="number">5</span>
+              <span className="text">Gerações</span>
             </a>
           </li>
           <li>
             <a href="#Quests">
-              <span className="number">120</span>
-              <span className="text">Quests</span>
+              <span className="number">7</span>
+              <span className="text">Minigames</span>
             </a>
           </li>
           <li>
             <a href="#NPCs">
-              <span className="number">60</span>
-              <span className="text">NPCs</span>
+              <span className="number">1.029</span>
+              <span className="text">Jogadores</span>
             </a>
           </li>
           <li>
             <a href="#Outfit">
-              <span className="number">520</span>
-              <span className="text">Outfit</span>
+              <span className="number">330</span>
+              <span className="text">Registros</span>
             </a>
           </li>
         </ul>
       </div>
-      <div className="last-outfit">
-        <h4>Últimos Pokémon</h4>
+      <section className={`our-better-content-section ${side}`}>
+        <h4>Nossos Conteúdos</h4>
         <img className="poke" src={selectedElement.Poke} alt="" />
-        <img className="element" src={selectedElement.icon} alt="" />
-        <ul id="pokemonList" className={`${selectedElement.type}`}>
-          {basicPokemon.map((base) => {
-            return <PokemonCard pokemonList={pokemon} pokemon={base} />;
-          })}
-        </ul>
-        <img className="element" src={selectedElement.icon} alt="" />
-      </div>
-      <div className="last-updates">
-        <h4>Últimas Atualizações</h4>
         <ul>
           <li>
-            <a href="#dragonite">
+            <a href="#pokedex">
               <div className="icon">
-                <ArrowRight size={32} />
+                <img src={solrock} className="floating" alt="" />
               </div>
-              <h5>Encontraram o Dragonite?</h5>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-                ipsam saepe porro laborum obcaecati asperiores aliquid facere,
-              </p>
+              <span>Jogos diários</span>
             </a>
           </li>
           <li>
-            <a href="#dragonite">
-              <div className="icon">
-                <ArrowRight size={32} />
-              </div>
-              <h5>Encontraram o Dragonite?</h5>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-                ipsam saepe porro laborum obcaecati asperiores aliquid facere,
-              </p>
+            <a href="#pokedex">
+              <div className="icon"></div>
+              <span>PokeDéx</span>
             </a>
           </li>
           <li>
-            <a href="#dragonite">
-              <div className="icon">
-                <ArrowRight size={32} />
-              </div>
-              <h5>Encontraram o Dragonite?</h5>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-                ipsam saepe porro laborum obcaecati asperiores aliquid facere,
-              </p>
+            <a href="#pokedex">
+              <div className="icon"></div>
+              <span>Pokédle</span>
             </a>
           </li>
           <li>
-            <a href="#dragonite">
-              <div className="icon">
-                <ArrowRight size={32} />
-              </div>
-              <h5>Encontraram o Dragonite?</h5>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-                ipsam saepe porro laborum obcaecati asperiores aliquid facere,
-              </p>
+            <a href="#pokedex">
+              <div className="icon"></div>
+              <span>Minigames</span>
+            </a>
+          </li>
+          <li>
+            <a href="#pokedex">
+              <div className="icon"></div>
+              <span>Jogos diários</span>
+            </a>
+          </li>
+          <li>
+            <a href="#pokedex">
+              <div className="icon"></div>
+              <span>Jogos diários</span>
             </a>
           </li>
         </ul>
-        <a href="#seemore" className="see-more">
-          ver mais
-        </a>
+        <img className="icon" src={ourContentImage} alt="" />
+      </section>
+      <div className={`last-updates ${side}`}>
+        <h4>Últimas Atualizações</h4>
+        <ul>
+          {news.map((notice, idx) => {
+            return <li key={idx}>
+              <a href={notice.url}>
+                <div className="icon">
+                  <ArrowRight size={32} />
+                </div>
+                <span className="date">{notice.date}</span>
+                <h5>{notice.title}</h5>
+                <p>{notice.p}</p>
+              </a>
+            </li>
+          })}
+        </ul>
       </div>
-    </>
+      <Footer />
+    </PageWithHeader>
   );
 }

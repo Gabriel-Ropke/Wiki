@@ -7,27 +7,92 @@
 
   /* Colors Scheme */
   --rock: 182, 158, 49;
+  --rock-light: 193, 173, 80;
+  --rock-dark: 155, 134, 42;
+
   --ghost: 112, 85, 155;
+  --ghost-light: 133, 111, 170;
+  --ghost-dark: 95, 72, 132;
+
   --steel: 183, 185, 208;
+  --steel-light: 194, 196, 215;
+  --steel-dark: 156, 157, 177;
+
   --water: 100, 147, 235;
+  --water-light: 123, 163, 238;
+  --water-dark: 85, 125, 200;
+
   --grass: 76, 203, 72;
+  --grass-light: 103, 211, 99;
+  --grass-dark: 65, 173, 61;
+
   --psychic: 251, 85, 132;
+  --psychic-light: 252, 111, 150;
+  --psychic-dark: 213, 72, 112;
+
   --ice: 154, 214, 223;
+  --ice-light: 169, 220, 228;
+  --ice-dark: 131, 182, 190;
+
   --dark: 117, 87, 76;
+  --dark-light: 138, 112, 103;
+  --dark-dark: 99, 74, 65;
+
   --fairy: 230, 158, 172;
+  --fairy-light: 234, 173, 184;
+  --fairy-dark: 196, 134, 146;
+
   --normal: 170, 166, 127;
+  --normal-light: 183, 179, 146;
+  --normal-dark: 145, 141, 108;
+
   --fighting: 193, 34, 57;
+  --fighting-light: 202, 67, 87;
+  --fighting-dark: 164, 29, 48;
+
   --flying: 168, 145, 236;
+  --flying-light: 181, 162, 239;
+  --flying-dark: 143, 123, 201;
+
   --poison: 164, 62, 158;
+  --poison-light: 178, 91, 173;
+  --poison-dark: 139, 53, 134;
+
   --ground: 222, 193, 107;
+  --ground-light: 227, 202, 129;
+  --ground-dark: 189, 164, 91;
+
   --bug: 167, 183, 35;
+  --bug-light: 180, 194, 68;
+  --bug-dark: 142, 156, 30;
+
   --fire: 245, 125, 49;
+  --fire-light: 247, 145, 80;
+  --fire-dark: 208, 106, 42;
+
   --electric: 249, 207, 48;
+  --electric-light: 250, 214, 79;
+  --electric-dark: 212, 176, 41;
+
   --dragon: 112, 55, 255;
+  --dragon-light: 133, 85, 255;
+  --dragon-dark: 95, 47, 217;
+
   --epic: 171, 17, 209;
+  --epic-light: 184, 53, 216;
+  --epic-dark: 145, 14, 178;
+
   --rare: 69, 207, 35;
+  --rare-light: 97, 214, 68;
+  --rare-dark: 59, 176, 30;
+
   --uncommon: 2, 100, 192;
+  --uncommon-light: 40, 123, 201;
+  --uncommon-dark: 2, 85, 163;
+
   --common: 95, 152, 206;
+  --common-light: 119, 167, 213;
+  --common-dark: 81, 129, 175;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -39,12 +104,21 @@
   scrollbar-gutter: stable;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {}
+
+html,
+body {
+  max-width: 100vw;
+  min-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
   min-height: 100vh;
   margin: 0;
+  background: white;
 }
 
 * {
@@ -56,9 +130,29 @@ body {
   background: none;
   outline: none;
   border: none;
+  font-family: 'Fredoka', sans-serif;
 }
 
 div.container-app {
   width: 100%;
   min-height: 100vh;
+}
+
+/* Animação Floating Global */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
 }
