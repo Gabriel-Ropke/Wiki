@@ -1,0 +1,12 @@
+main.pageWithHeaderContent {
+    transition: 0.3s ease;
+    padding-top: 95px;
+}
+
+header.open:hover~main.pageWithHeaderContent {
+    padding-top: 120px;
+}
+
+button.menu-btn:not(.open):hover~main.pageWithHeaderContent {
+    padding-top: 120px;
+}

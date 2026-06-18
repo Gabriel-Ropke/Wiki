@@ -1,0 +1,36 @@
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background-color: var(--primary-color, #000);
+  pointer-events: all;
+}
+
+.page-transition-overlay.fadeOut {
+  animation: circleGrow 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.page-transition-overlay.fadeIn {
+  animation: circleShrink 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes circleGrow {
+  0% {
+    clip-path: circle(0% at 0% 100%);
+  }
+  100% {
+    clip-path: circle(150% at 0% 100%);
+  }
+}
+
+@keyframes circleShrink {
+  0% {
+    clip-path: circle(150% at 100% 0%);
+  }
+  100% {
+    clip-path: circle(0% at 100% 0%);
+  }
+}

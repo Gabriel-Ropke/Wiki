@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./input.css"
+import "./Input.css"
 import { EyeClosed, EyeIcon } from "lucide-react"
 
 

@@ -94,6 +94,9 @@
   --common-light: 119, 167, 213;
   --common-dark: 81, 129, 175;
 
+  --error: #F36445;
+  --correct: #45F395;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -101,7 +104,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-gutter: stable;
 }
 
 @media (prefers-color-scheme: dark) {}
@@ -155,4 +157,17 @@ div.container-app {
 
 .floating {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

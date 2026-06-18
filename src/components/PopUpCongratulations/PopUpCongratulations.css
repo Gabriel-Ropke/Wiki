@@ -1,0 +1,178 @@
+div.popUpCongratulations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    pointer-events: none;
+
+    &.active {
+        pointer-events: all;
+
+        div.background {
+            width: 100%;
+            height: 100%;
+        }
+
+        div.popUpContainer {
+            animation: popUp 0.5s;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    div.background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+        transition: 0.3s ease;
+    }
+
+    div.popUpContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 450px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: -5px 5px 10px 0 rgba(0, 0, 0, 0.714), -10px 10px 0px var(--primary-color);
+        color: black;
+        padding: 30px 20px 20px 20px;
+        box-sizing: border-box;
+        transform: translate(-50%, -50%) scale(0);
+
+        h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        span.close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 8px;
+            transition: 0.2s ease;
+            /* Arredondando um pouco a caixa rosa */
+
+            &:hover {
+                transform: rotate(15deg);
+
+                svg {
+                    filter: drop-shadow(2px 3px 0px black);
+                }
+            }
+
+            svg {
+                transition: 0.2s ease;
+                /* Sombra no formato EXATO do ícone (drop-shadow) */
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.6));
+            }
+        }
+
+        img.pokemon-img {
+            width: 130px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        span.pokemon-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        div.attempts-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+
+            span.attempts-label {
+                font-size: 22px;
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+
+            span.attempts-value {
+                font-size: 45px;
+                font-weight: bold;
+                color: black;
+                line-height: 1;
+            }
+        }
+
+        div.statistics {
+            width: 100%;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 15px 10px 5px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+
+            h4 {
+                color: var(--primary-color);
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            div.graphics {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        span.see-more {
+            position: relative;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                &::before {
+                    width: 100%;
+                }
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: 0.3s ease;
+                width: 0;
+                height: 2px;
+                background: black;
+            }
+        }
+    }
+}
+
+@keyframes popUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
